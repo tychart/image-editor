@@ -1,0 +1,27 @@
+{
+  "name": "image-editor",
+  "version": "1.0.0",
+  "description": "Project For CS 340",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tychart/image-editor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tychart/image-editor/issues"
+  },
+  "homepage": "https://github.com/tychart/image-editor#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@types/node": "^24.3.1"
+  }
+}
