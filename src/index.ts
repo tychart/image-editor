@@ -52,6 +52,7 @@ switch(op) {
         break;
     }
     default: {
+        console.error(`Error: Input '${op} not reconized, please use one of the supported options grayscale|invert|emboss|motionblur`)
         process.exit(1);
     }
 }
