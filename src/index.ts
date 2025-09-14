@@ -1,11 +1,11 @@
 import * as fs from "node:fs";
 
-import { emboss, grayscale, invert } from "./functions";
+import { emboss, grayscale, invert, motionblur } from "./functions";
 import { Image, Color } from "./image";
 
 console.log("Program Input Validation!");
 
-const [arg1 , arg2, inPath, outPath, op ] = process.argv;
+const [arg1 , arg2, inPath, outPath, op, motionblurLength ] = process.argv;
 if (!inPath || !outPath || !op) {
   console.error("USAGE: node dist/index.js <in-file> <out-file> <grayscale|invert|emboss|motionblur> [motion-blur-length]");
   process.exit(1);
@@ -47,6 +47,8 @@ switch(op) {
     }
     case "motionblur": {
         console.log("Doing Motionblur")
+        motionblur(image, Number(motionblurLength))
+        console.log("Finished Motionblur")
         break;
     }
     default: {

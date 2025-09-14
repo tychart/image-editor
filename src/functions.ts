@@ -96,3 +96,42 @@ export function emboss(image: Image): void {
 
 
 }
+
+
+export function motionblur(image: Image, length: number): void {
+    if (length < 1) {
+        return;
+    }
+
+    for (let x: number = 0; x < image.width; ++x) {
+        for (let y: number = 0; y < image.height; ++y) {
+            const currColor: Color | undefined = image.pixels[x]![y]
+
+            if (currColor === undefined) {
+                throw new Error(`Invalid pixel at {x=${x}, y=${y}}`)
+            }
+
+            let maxX: number = Math.min(image.width - 1, x + length - 1);
+
+            for (let i: number = x + 1; i <= maxX; ++i) {
+                const tmpColor: Color | undefined = image.pixels[i]![y];
+
+                if (tmpColor === undefined) {
+                    throw new Error(`Invalid pixel at {x=${x}, y=${y}}`)
+                }
+
+                currColor.red += tmpColor.red;
+                currColor.green += tmpColor.green;
+                currColor.blue += tmpColor.blue;
+
+            }
+
+            let delta = (maxX - x + 1);
+
+            currColor.red = Math.floor(currColor.red / delta)
+            currColor.green = Math.floor(currColor.green / delta)
+            currColor.blue = Math.floor(currColor.blue / delta)
+
+        }
+    }
+}
